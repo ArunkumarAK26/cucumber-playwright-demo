@@ -19,7 +19,8 @@ After({ tags: "@api" }, async function (this: CustomWorld) {
 // ── Given Steps ───────────────────────────────────────────────────────────────
 
 Given("the API base URL is configured", function (this: CustomWorld) {
-  // ENV.BASE_URL loaded from .env
+  console.log(`🌐 Running tests against: ${ENV.BASE_URL}`);
+  console.log(`🌐 Running tests against: ${ENV.BASE_URL}`);
 });
 
 Given(
