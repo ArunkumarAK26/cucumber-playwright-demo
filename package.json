@@ -1,0 +1,31 @@
+{
+  "name": "cucumber-playwright-demo",
+  "version": "1.0.0",
+  "description": "WhiteBlue API automation – Playwright + Cucumber",
+  "scripts": {
+    "test:login": "cucumber-js --config cucumber.json",
+    "test:api001": "cucumber-js --config cucumber.json --tags @API-001",
+    "test:api002": "cucumber-js --config cucumber.json --tags @API-002",
+    "test:api003": "cucumber-js --config cucumber.json --tags @API-003",
+    "test:api004": "cucumber-js --config cucumber.json --tags @API-004",
+    "test:smoke": "cucumber-js --config cucumber.json --tags @smoke",
+    "test:negative": "cucumber-js --config cucumber.json --tags @negative",
+    "test:unit": "cucumber-js --config cucumber.json features/unit/unit.feature --tags @unit",
+    "test:all": "cucumber-js --config cucumber.json features/login.feature features/unit/unit.feature",
+    "allure:report": "npx allure generate --output allure-report allure-results",
+    "allure:open": "npx allure open allure-report",
+    "test:report": "cucumber-js --config cucumber.json && npx allure generate --output allure-report allure-results && npx allure open allure-report"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.9.0",
+    "@playwright/test": "^1.44.0",
+    "@types/node": "^20.12.7",
+    "allure-cucumberjs": "^3.0.0",
+    "allure-js-commons": "^3.10.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
