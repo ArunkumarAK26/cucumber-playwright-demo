@@ -33,6 +33,8 @@ export interface ICustomWorld extends World {
   page: Page;
   loginPage: LoginPage;
   registerPage: RegisterPage;
+
+  orderPage: OrderPage;
   uiRegisteredUser: UiRegisteredUser;
 }
 
@@ -50,6 +52,7 @@ export class CustomWorld extends World implements ICustomWorld {
   page!: Page;
   loginPage!: LoginPage;
   registerPage!: RegisterPage;
+  orderPage!: OrderPage;
   uiRegisteredUser!: UiRegisteredUser;
 
   constructor(options: IWorldOptions) {
@@ -75,7 +78,11 @@ export class CustomWorld extends World implements ICustomWorld {
 
   // ── Browser lifecycle (UI tests) ───────────────
   async initBrowser(): Promise<void> {
-    this.browser = await chromium.launch({ headless: false, slowMo: 500 });
+const isCI = process.env.CI === "true" || !!process.env.JENKINS_URL;
+    this.browser = await chromium.launch({
+      headless: isCI ? true : false,
+      slowMo: isCI ? 0 : 500,
+    });
     this.context = await this.browser.newContext({ baseURL: ENV.BASE_URL });
     this.page = await this.context.newPage();
   }
