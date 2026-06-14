@@ -21,6 +21,7 @@ After({ tags: "@api" }, async function (this: CustomWorld) {
 Given("the API base URL is configured", function (this: CustomWorld) {
   console.log(`🌐 Running tests against: ${ENV.BASE_URL}`);
   console.log(`🌐 Running tests against: ${ENV.BASE_URL}`);
+  console.log(`🌐 Running tests against: ${ENV.BASE_URL}`);
 });
 
 Given(
