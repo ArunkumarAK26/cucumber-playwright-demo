@@ -2,11 +2,13 @@
   "default": {
     "require": [
       "features/step-definitions/world.ts",
-      "features/step-definitions/login.steps.ts"
+      "features/step-definitions/login.steps.ts",
+      "features/step-definitions/ui.steps.ts"
     ],
     "requireModule": ["ts-node/register"],
     "paths": [
-      "features/login.feature"
+      "features/login.feature",
+      "features/ui.feature"
     ],
     "format": [
       "progress",
