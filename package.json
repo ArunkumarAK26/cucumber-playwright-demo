@@ -11,7 +11,8 @@
     "test:smoke": "cucumber-js --config cucumber.json --tags @smoke",
     "test:negative": "cucumber-js --config cucumber.json --tags @negative",
     "test:unit": "cucumber-js --config cucumber.json features/unit/unit.feature --tags @unit",
-    "test:all": "cucumber-js --config cucumber.json features/login.feature features/unit/unit.feature",
+    "test:ui": "cucumber-js --config cucumber.json --tags @ui",
+    "test:all": "cucumber-js --config cucumber.json features/login.feature features/unit/unit.feature features/ui.feature",
     "allure:report": "npx allure generate --output allure-report allure-results",
     "allure:open": "npx allure open allure-report",
     "test:report": "cucumber-js --config cucumber.json && npx allure generate --output allure-report allure-results && npx allure open allure-report"

@@ -23,9 +23,20 @@ pipeline {
             }
         }
 
-        stage('Run Cucumber + Playwright Tests') {
+        stage('Run Login & API Tests') {
             steps {
                 bat 'npm run test:login'
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: 'allure-results/**', allowEmptyArchive: true
+                }
+            }
+        }
+
+        stage('Run UI Tests') {
+            steps {
+                bat 'npm run test:ui'
             }
             post {
                 always {
@@ -47,10 +58,10 @@ pipeline {
 
     post {
         success {
-            echo '✅ All tests passed! Check Allure Dashboard.'
+            echo '✅ Regression passed! Login, API & UI all green. Check Allure Dashboard.'
         }
         failure {
-            echo '❌ Tests failed! Check Allure Dashboard.'
+            echo '❌ Regression failed! Check Allure Dashboard for details.'
         }
     }
 }
